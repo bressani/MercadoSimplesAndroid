@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Layout;
+import android.widget.TextView;
 
 public class Secundaria extends AppCompatActivity {
 
@@ -21,7 +23,6 @@ public class Secundaria extends AppCompatActivity {
         int feijao = dados.getInt("feijao");
         int leite = dados.getInt("leite");
 
-        int Rarroz, Rfeijao, Rleite;
         int arrozResult, feijaoResult, leiteResult;
 
         arrozResult = arroz * 10;
@@ -31,10 +32,12 @@ public class Secundaria extends AppCompatActivity {
         AlertDialog.Builder dialogo = new AlertDialog.Builder(Secundaria.this);
 
         int total = arrozResult + feijaoResult + leiteResult;
-        dialogo.setTitle("Compra");
-        dialogo.setMessage("O valor total da compra é: R$" + total);
-        dialogo.setNeutralButton("Ok", null);
-        dialogo.show();
+
+        TextView texto = (TextView) findViewById(R.id.resultado);
+        texto.setText("Arroz: " + arroz + "  Valor: R$" + arrozResult +
+                "\n\nFeijão: " + feijao + "  Valor: R$" + feijaoResult +
+                "\n\nLeite: " + leite + "  Valor: R$" + leiteResult +
+                "\n\n\nValor total da sua compra: R$" + total);
 
     }
 }

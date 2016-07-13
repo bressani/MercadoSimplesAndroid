@@ -3,9 +3,14 @@ package com.example.bressani.mercadosimples;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 public class Principal extends AppCompatActivity {
 
@@ -24,7 +29,31 @@ public class Principal extends AppCompatActivity {
         arroz.setOnClickListener(controladorArroz);
         feijao.setOnClickListener(controladorFeijao);
         leite.setOnClickListener(controladorLeite);
+
+
+        final TextView editArroz = (TextView) findViewById(R.id.qtdArroz);
+        editArroz.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (/*Integer.parseInt(editArroz.getText().toString())*/1 > 0)
+                    arroz.setSelected(true);
+                else
+                    arroz.setSelected(false);
+
+            }
+        });
     }
+
 
     public void carrinho(View view) {
         Intent intent = new Intent(this, Secundaria.class);
@@ -52,6 +81,8 @@ public class Principal extends AppCompatActivity {
 
             if (quantidade == 0) {
                 view.setText("1");
+            } else {
+                view.setText("0");
             }
 
         }
@@ -63,6 +94,8 @@ public class Principal extends AppCompatActivity {
 
             if (quantidade == 0) {
                 view.setText("1");
+            } else {
+                view.setText("0");
             }
         }
     };
@@ -73,9 +106,10 @@ public class Principal extends AppCompatActivity {
 
             if (quantidade == 0) {
                 view.setText("1");
+            } else {
+                view.setText("0");
             }
         }
     };
-
 
 }
